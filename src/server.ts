@@ -3,17 +3,18 @@
 
 import "reflect-metadata";
 import express from 'express';
-import './database'
+
+import {router} from './routes';
+
+import './database';
+
+
 
 const app = express();
 
-app.get('/test', (req,res)=> {
-   return res.send('Olá nlw')
-})
+app.use(express.json());
 
-app.post('/test-post', (req,res)=> {
-    return res.send('Olá nlw método post')
-})
+app.use(router);
 
 app.listen(3000, ()=> console.log('Server is running'))
 
